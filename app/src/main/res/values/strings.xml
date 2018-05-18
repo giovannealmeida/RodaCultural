@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Roda Cultural</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pellentesque fermentum justo, vel vulputate mi luctus et. Nunc porta vestibulum nunc nec pulvinar. In nec vestibulum eros, non tempus mauris. Nunc ligula ligula, consequat a leo et, semper fermentum nulla. Donec pulvinar mauris quis faucibus feugiat. In eu leo a.</string>
+    <string name="mei">MEI</string>
+</resources>
