@@ -1,4 +1,4 @@
-package br.gov.rodacultural.rodacultural.activities;
+package br.gov.rodacultural.rodacultural.fragments;
 
 import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
@@ -23,6 +23,7 @@ import br.gov.rodacultural.rodacultural.models.Group;
 public class GroupFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private FloatingActionButton fab;
 
     public GroupFragment() {
         // Required empty public constructor
@@ -37,7 +38,7 @@ public class GroupFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,10 +57,11 @@ public class GroupFragment extends Fragment {
             }
         });
 
+        fab.animate().translationY(0).setDuration(200);
+
         List<Group> list = new ArrayList<>();
         view.findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
         recyclerView.setAdapter(new GroupAdapter(list,getActivity()));
         return view;
     }
-
 }

@@ -1,5 +1,7 @@
 package br.gov.rodacultural.rodacultural;
 
+import android.animation.Animator;
+import android.animation.TimeInterpolator;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,12 +26,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
-import br.gov.rodacultural.rodacultural.activities.GroupFragment;
+import br.gov.rodacultural.rodacultural.fragments.AgendaFragment;
+import br.gov.rodacultural.rodacultural.fragments.GroupFragment;
 import br.gov.rodacultural.rodacultural.fragments.MainFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final float VIEW_HIDE_TRANSLANTION = 250;
+    private static final float VIEW_SHOW_TRANSLANTION = 0;
+    private static final long VIEW_ANIMATION_TIME = 200;
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
 
@@ -132,13 +138,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (fab.getTranslationY() == VIEW_HIDE_TRANSLANTION) {
+            fab.animate().translationY(VIEW_SHOW_TRANSLANTION).setDuration(VIEW_ANIMATION_TIME);
+        }
 
         if (id == R.id.nav_home) {
             showFragment(new MainFragment());
-            fab.setVisibility(View.VISIBLE);
         } else if (id == R.id.nav_groups) {
             showFragment(new GroupFragment());
-            fab.setVisibility(View.GONE);
+            fab.animate().translationY(VIEW_HIDE_TRANSLANTION).setDuration(VIEW_ANIMATION_TIME);
+        } else if (id == R.id.nav_agenda) {
+            showFragment(new AgendaFragment());
         }
 
 //        if (id == R.id.nav_camera) {
