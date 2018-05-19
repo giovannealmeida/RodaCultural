@@ -1,10 +1,12 @@
 package br.gov.rodacultural.rodacultural.models;
 
+import java.io.Serializable;
+
 /**
  * Created by Giovanne on 18/05/2018.
  */
 
-public class FeedItem {
+public class FeedItem implements Serializable{
     private int id;
     private boolean isMEI;
     private String title;

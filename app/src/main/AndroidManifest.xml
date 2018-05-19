@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.gov.rodacultural.rodacultural">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +20,29 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dt23d.app.goo.gl"
+                    android:scheme="iana" />
+                <data
+                    android:host="dt23d.app.goo.gl"
+                    android:scheme="http" />
+                <data
+                    android:host="dt23d.app.goo.gl"
+                    android:scheme="https" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.ChatActivity" />
+        <activity android:name=".activities.GroupActivity"></activity>
     </application>
 
 </manifest>

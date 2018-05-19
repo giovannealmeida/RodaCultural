@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "509826731013",
+    "firebase_url": "https://iana-dda09.firebaseio.com",
+    "project_id": "iana-dda09",
+    "storage_bucket": "iana-dda09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509826731013:android:97d7774b09b9c4c2",
+        "android_client_info": {
+          "package_name": "br.gov.rodacultural"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509826731013-dd095d5pri7k4vd8j66q1m59g5tg8d6n.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "509826731013-o2olug0p5r6asegstbp9ann3ieq44oi6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC2FEug3Rvl8HL6M2AFCtiEVC14kmk2Ew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509826731013:android:a9dad1f2838521dc",
+        "android_client_info": {
+          "package_name": "br.gov.rodacultural.rodacultural"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509826731013-h4dv5dilg1ueavurrpt01o223pj23nbp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.gov.rodacultural.rodacultural",
+            "certificate_hash": "cbae42b51296ddae42af473ed924c3202cc03000"
+          }
+        },
+        {
+          "client_id": "509826731013-dd095d5pri7k4vd8j66q1m59g5tg8d6n.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "509826731013-o2olug0p5r6asegstbp9ann3ieq44oi6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC2FEug3Rvl8HL6M2AFCtiEVC14kmk2Ew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509826731013-dd095d5pri7k4vd8j66q1m59g5tg8d6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,15 +5,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_profile"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Perfil" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_groups"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Grupos" />
         <item
@@ -25,7 +25,7 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Editais" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_messages"
             android:icon="@drawable/ic_menu_manage"
             android:title="Mensagens" />
     </group>
@@ -33,11 +33,11 @@
     <item android:title="Informações">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_about_mei"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Sobre MEI" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_about_app"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Sobre o Roda Cultural" />
 
@@ -46,7 +46,7 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="FAQ" />
             <item
-                android:id="@+id/nav_ia"
+                android:id="@+id/nav_about_iana"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Sobre IA.na" />
         </menu>

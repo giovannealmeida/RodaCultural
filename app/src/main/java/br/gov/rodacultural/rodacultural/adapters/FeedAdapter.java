@@ -1,5 +1,7 @@
 package br.gov.rodacultural.rodacultural.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import br.gov.rodacultural.rodacultural.R;
+import br.gov.rodacultural.rodacultural.activities.ProfileActivity;
 import br.gov.rodacultural.rodacultural.models.FeedItem;
 
 import java.util.List;
@@ -17,31 +20,40 @@ import java.util.List;
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 
     private final List<FeedItem> list;
+    private Context context;
 
-    public FeedAdapter(List<FeedItem> list) {
+    public FeedAdapter(List<FeedItem> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.feed_item, parent, false);
+                .inflate(R.layout.item_feed, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.title.setText(list.get(position).getTitle());
         holder.subTitle.setText(list.get(position).getSubTitle());
         holder.content.setText(list.get(position).getContent());
         Picasso.get().load(list.get(position).getContentImageUrl()).into(holder.contentImage);
         Picasso.get().load(list.get(position).getTitleImageUrl()).into(holder.titleImage);
 
-        if(list.get(position).isMEI()){
-           holder.mei.setVisibility(View.VISIBLE);
+        if (list.get(position).isMEI()) {
+            holder.mei.setVisibility(View.VISIBLE);
         } else {
             holder.mei.setVisibility(View.GONE);
         }
+
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, ProfileActivity.class).putExtra("profile",list.get(position)));
+            }
+        });
     }
 
     @Override

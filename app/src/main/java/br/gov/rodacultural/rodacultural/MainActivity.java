@@ -3,10 +3,12 @@ package br.gov.rodacultural.rodacultural;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,9 +19,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import br.gov.rodacultural.rodacultural.activities.GroupActivity;
 import br.gov.rodacultural.rodacultural.adapters.FeedAdapter;
 import br.gov.rodacultural.rodacultural.models.FeedItem;
 
@@ -32,6 +40,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setUpDeepLink();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,8 +72,37 @@ public class MainActivity extends AppCompatActivity
         list.add(new FeedItem(3,"Museu do descobrimento","Museu",getString(R.string.lorem_ipsum),"https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif","https://projects.scpr.org/static-files/_v4/images/default_avatar.png",false));
         list.add(new FeedItem(4,"Rio dos Macacos","Comunidade quilombola",getString(R.string.lorem_ipsum),"https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif","https://projects.scpr.org/static-files/_v4/images/default_avatar.png",false));
         list.add(new FeedItem(5,"CECUP - Centro de Educação e Cultura Popular","ONG",getString(R.string.lorem_ipsum),"http://1.bp.blogspot.com/_CYiU1C4-83s/S9c7pSRmBOI/AAAAAAAAAq4/D-L0OSh8uTE/S260/cecup200.jpg","https://projects.scpr.org/static-files/_v4/images/default_avatar.png",false));
-        recyclerView.setAdapter(new FeedAdapter(list));
+        recyclerView.setAdapter(new FeedAdapter(list, this));
 
+    }
+
+    private void setUpDeepLink() {
+        FirebaseDynamicLinks.getInstance()
+                .getDynamicLink(getIntent())
+                .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                    @Override
+                    public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                        // Get deep link from result (may be null if no link is found)
+                        Uri deepLink = null;
+                        if (pendingDynamicLinkData != null) {
+                            deepLink = pendingDynamicLinkData.getLink();
+                        }
+
+
+                        // Handle the deep link. For example, open the linked
+                        // content, or apply promotional credit to the user's
+                        // account.
+                        // ...
+
+                        // ...
+                    }
+                })
+                .addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Firebase DeepLink", "getDynamicLink:onFailure", e);
+                    }
+                });
     }
 
     @Override
@@ -103,19 +143,23 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_groups) {
+            startActivity(new Intent(this, GroupActivity.class));
         }
+
+//        if (id == R.id.nav_camera) {
+//            // Handle the camera action
+//        } else if (id == R.id.nav_gallery) {
+//
+//        } else if (id == R.id.nav_slideshow) {
+//
+//        } else if (id == R.id.nav_manage) {
+//
+//        } else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
