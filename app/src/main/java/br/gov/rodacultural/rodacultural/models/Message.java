@@ -5,8 +5,9 @@ package br.gov.rodacultural.rodacultural.models;
  */
 
 public class Message {
+    private long id;
     private String text;
-    private User user;
+    private User user; /* Quem enviou a mensagem*/
     private String timestamp;
 
     public Message(String text, User user, String timestamp) {

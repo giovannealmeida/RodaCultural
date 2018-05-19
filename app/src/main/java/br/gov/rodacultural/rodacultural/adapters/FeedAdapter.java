@@ -21,6 +21,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 
     private final List<FeedItem> list;
     private Context context;
+    private String PROFILE_PLACEHOLDER = "https://projects.scpr.org/static-files/_v4/images/default_avatar.png";
+    private String CONTENT_PLACEHOLDER = "https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif";
 
     public FeedAdapter(List<FeedItem> list, Context context) {
         this.list = list;
@@ -39,8 +41,18 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
         holder.title.setText(list.get(position).getTitle());
         holder.subTitle.setText(list.get(position).getSubTitle());
         holder.content.setText(list.get(position).getContent());
-        Picasso.get().load(list.get(position).getContentImageUrl()).into(holder.contentImage);
-        Picasso.get().load(list.get(position).getTitleImageUrl()).into(holder.titleImage);
+
+        if(list.get(position).getContentImageUrl().isEmpty()) {
+            Picasso.get().load(CONTENT_PLACEHOLDER).into(holder.contentImage);
+        } else {
+            Picasso.get().load(list.get(position).getContentImageUrl()).into(holder.contentImage);
+        }
+
+        if(list.get(position).getTitleImageUrl().isEmpty()) {
+            Picasso.get().load(PROFILE_PLACEHOLDER).into(holder.titleImage);
+        } else {
+            Picasso.get().load(list.get(position).getTitleImageUrl()).into(holder.titleImage);
+        }
 
         if (list.get(position).isMEI()) {
             holder.mei.setVisibility(View.VISIBLE);

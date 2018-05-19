@@ -28,6 +28,7 @@ import br.gov.rodacultural.rodacultural.fragments.AgendaFragment;
 import br.gov.rodacultural.rodacultural.fragments.EditalFragment;
 import br.gov.rodacultural.rodacultural.fragments.GroupFragment;
 import br.gov.rodacultural.rodacultural.fragments.FeedFragment;
+import br.gov.rodacultural.rodacultural.fragments.MessageFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -150,6 +151,8 @@ public class MainActivity extends AppCompatActivity
             showFragment(new AgendaFragment());
         } else if (id == R.id.nav_editais) {
             showFragment(new EditalFragment());
+        } else if (id == R.id.nav_messages) {
+            showFragment(new MessageFragment());
         }
 
 //        if (id == R.id.nav_camera) {
