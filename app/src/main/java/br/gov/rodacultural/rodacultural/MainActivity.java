@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -29,6 +31,7 @@ import java.util.List;
 
 import br.gov.rodacultural.rodacultural.activities.GroupActivity;
 import br.gov.rodacultural.rodacultural.adapters.FeedAdapter;
+import br.gov.rodacultural.rodacultural.fragments.MainFragment;
 import br.gov.rodacultural.rodacultural.models.FeedItem;
 
 public class MainActivity extends AppCompatActivity
@@ -64,15 +67,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.feed);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<FeedItem> list = new ArrayList<>();
-        list.add(new FeedItem(1,"Jailso Andrade","Professor de capoeira",getString(R.string.lorem_ipsum),"https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif","https://projects.scpr.org/static-files/_v4/images/default_avatar.png", true));
-        list.add(new FeedItem(2,"Instituto Cultural Steve Biko","ONG",getString(R.string.lorem_ipsum),"https://static.wixstatic.com/media/d7dbcc_397215f6704d4e77a5f6aff465b72305~mv2.jpeg/v1/fill/w_300,h_225,al_c,q_80,usm_0.66_1.00_0.01/d7dbcc_397215f6704d4e77a5f6aff465b72305~mv2.webp","https://static.wixstatic.com/media/d7dbcc_edeb2e9faea94e5fafc17d248a0191c9.png/v1/fill/w_128,h_129,al_c,usm_0.66_1.00_0.01/d7dbcc_edeb2e9faea94e5fafc17d248a0191c9.png",true));
-        list.add(new FeedItem(3,"Museu do descobrimento","Museu",getString(R.string.lorem_ipsum),"https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif","https://projects.scpr.org/static-files/_v4/images/default_avatar.png",false));
-        list.add(new FeedItem(4,"Rio dos Macacos","Comunidade quilombola",getString(R.string.lorem_ipsum),"https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif","https://projects.scpr.org/static-files/_v4/images/default_avatar.png",false));
-        list.add(new FeedItem(5,"CECUP - Centro de Educação e Cultura Popular","ONG",getString(R.string.lorem_ipsum),"http://1.bp.blogspot.com/_CYiU1C4-83s/S9c7pSRmBOI/AAAAAAAAAq4/D-L0OSh8uTE/S260/cecup200.jpg","https://projects.scpr.org/static-files/_v4/images/default_avatar.png",false));
-        recyclerView.setAdapter(new FeedAdapter(list, this));
+        showFragment(new MainFragment());
 
     }
 
@@ -143,7 +138,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_groups) {
+
+        if (id == R.id.nav_home) {
+            showFragment(new MainFragment());
+        } else if (id == R.id.nav_groups) {
             startActivity(new Intent(this, GroupActivity.class));
         }
 
@@ -165,4 +163,12 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void showFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
+    }
+
 }
