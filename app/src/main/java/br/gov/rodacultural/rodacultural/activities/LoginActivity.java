@@ -1,5 +1,6 @@
 package br.gov.rodacultural.rodacultural.activities;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +11,15 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import br.gov.rodacultural.rodacultural.MainActivity;
 import br.gov.rodacultural.rodacultural.R;
+import br.gov.rodacultural.rodacultural.models.User;
 import br.gov.rodacultural.rodacultural.network.NetworkHelper;
 import br.gov.rodacultural.rodacultural.network.ResponseCallback;
+import br.gov.rodacultural.rodacultural.utils.SessionHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,6 +60,16 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String jsonStringResponse, int statusCode) {
                             progressBar.setVisibility(View.GONE);
+
+                            try {
+                                JSONObject json = new JSONObject(jsonStringResponse);
+                                User user = new User(json);
+                                new SessionHelper(LoginActivity.this).saveUser(user, json.getString("token"),tilPassword.getEditText().getText().toString().trim());
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         @Override

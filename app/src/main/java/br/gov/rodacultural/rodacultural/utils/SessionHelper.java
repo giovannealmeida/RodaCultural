@@ -4,10 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
+import br.gov.rodacultural.rodacultural.models.User;
 
 /**
  * Created by Giovanne on 30/06/2016.
@@ -61,19 +58,14 @@ public class SessionHelper {
         return userToken;
     }
 
-    public void saveUser(JSONObject userData, String password) {
-        try {
-            DBHelper dbHelper = new DBHelper(context);
-            ContentValues values = new ContentValues();
-
-            values.put("token", userData.getString("token"));
-            values.put("name", userData.getString("name"));
-            values.put("email", userData.getString("email"));
-            values.put("password", password);
-            dbHelper.getDatabase().insert(DBHelper.TBL_USER, null, values);
-            dbHelper.close();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public void saveUser(User user, String token, String password) {
+        DBHelper dbHelper = new DBHelper(context);
+        ContentValues values = new ContentValues();
+        values.put("name", user.getName());
+        values.put("email", user.getEmail());
+        values.put("password", password);
+        values.put("token", token);
+        dbHelper.getDatabase().insert(DBHelper.TBL_USER, null, values);
+        dbHelper.close();
     }
 }

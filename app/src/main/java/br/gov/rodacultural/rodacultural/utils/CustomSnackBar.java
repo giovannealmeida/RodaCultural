@@ -5,7 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import br.com.sisvida.sisvida.R;
+import br.gov.rodacultural.rodacultural.R;
 
 /**
  * Created by Giovanne on 02/07/2016.
@@ -24,12 +24,15 @@ public class CustomSnackBar {
                 .findViewById(android.support.design.R.id.snackbar_text);
         snackTextView.setTextColor(Color.rgb(255, 255, 255));
 
-        switch (type){
+        switch (type) {
             case ERROR:
                 snackbar.getView().setBackgroundResource(R.color.snackBackgroundError);
                 break;
             case SUCCESS:
                 snackbar.getView().setBackgroundResource(R.color.snackBackgroundSuccess);
+                break;
+            case INFO:
+                snackbar.getView().setBackgroundResource(R.color.snackBackgroundInfo);
                 break;
         }
 

@@ -13,6 +13,6 @@
     <!--SnackBar-->
     <color name="snackBackgroundError">#992222</color>
     <color name="snackBackgroundSuccess">#48AA48</color>
-    <color name="snackBackgroundInfo">#2196f3</color>
+    <color name="snackBackgroundInfo">#5f4339</color>
 
 </resources>
