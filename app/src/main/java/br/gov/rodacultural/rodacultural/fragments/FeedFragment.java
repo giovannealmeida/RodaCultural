@@ -19,12 +19,12 @@ import br.gov.rodacultural.rodacultural.models.FeedItem;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class FeedFragment extends Fragment {
 
 
     private RecyclerView recyclerView;
 
-    public MainFragment() {
+    public FeedFragment() {
         // Required empty public constructor
     }
 
@@ -33,8 +33,8 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.feed);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         List<FeedItem> list = new ArrayList<>();
         list.add(new FeedItem(1, "Jailso Andrade", "Professor de capoeira", getString(R.string.lorem_ipsum), "https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif", "https://projects.scpr.org/static-files/_v4/images/default_avatar.png", true));

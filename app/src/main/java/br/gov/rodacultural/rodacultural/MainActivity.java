@@ -1,7 +1,5 @@
 package br.gov.rodacultural.rodacultural;
 
-import android.animation.Animator;
-import android.animation.TimeInterpolator;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,8 +25,9 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
 import br.gov.rodacultural.rodacultural.fragments.AgendaFragment;
+import br.gov.rodacultural.rodacultural.fragments.EditalFragment;
 import br.gov.rodacultural.rodacultural.fragments.GroupFragment;
-import br.gov.rodacultural.rodacultural.fragments.MainFragment;
+import br.gov.rodacultural.rodacultural.fragments.FeedFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        showFragment(new MainFragment());
+        showFragment(new FeedFragment());
 
     }
 
@@ -143,12 +142,14 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.nav_home) {
-            showFragment(new MainFragment());
+            showFragment(new FeedFragment());
         } else if (id == R.id.nav_groups) {
             showFragment(new GroupFragment());
             fab.animate().translationY(VIEW_HIDE_TRANSLANTION).setDuration(VIEW_ANIMATION_TIME);
         } else if (id == R.id.nav_agenda) {
             showFragment(new AgendaFragment());
+        } else if (id == R.id.nav_editais) {
+            showFragment(new EditalFragment());
         }
 
 //        if (id == R.id.nav_camera) {
