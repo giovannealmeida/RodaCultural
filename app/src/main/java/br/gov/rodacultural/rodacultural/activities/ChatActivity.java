@@ -6,6 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,22 +29,26 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        findViewById(R.id.btBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        Picasso.get().load( getIntent().getExtras().get("user_pic").toString()).into((ImageView) findViewById(R.id.ivProfile));
 
         recyclerView = (RecyclerView) findViewById(R.id.chat);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Message> list = new ArrayList<>();
-        list.add(new Message("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pellentesque fermentum justo, vel vulputate mi luctus et. Nunc porta vestibulum nunc nec pulvinar. In nec vestibulum eros, non tempus mauris. Nunc ligula ligula, consequat a leo et, semper fermentum nulla. Donec pulvinar mauris quis faucibus feugiat. In eu leo a.",new User(1,"User 2", false),""));
-        list.add(new Message("WTF...",new User(1,"User 1", true),""));
-        recyclerView.setAdapter(new ChatAdapter(list,this));
+        list.add(new Message("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pellentesque fermentum justo, vel vulputate mi luctus et. Nunc porta vestibulum nunc nec pulvinar. In nec vestibulum eros, non tempus mauris. Nunc ligula ligula, consequat a leo et, semper fermentum nulla. Donec pulvinar mauris quis faucibus feugiat. In eu leo a.", new User(1, getIntent().getExtras().get("user_name").toString(), "https://i.imgur.com/r0bsDqL.jpg", false), ""));
+        list.add(new Message("WTF...", new User(1, "Você", "", true), ""));
+        recyclerView.setAdapter(new ChatAdapter(list, this));
 
-        getSupportActionBar().setTitle("User 2");
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        finish(); //Só tem uma ação que é o botão de voltar...
-        return super.onOptionsItemSelected(item);
+        getSupportActionBar().setTitle( getIntent().getExtras().get("user_name").toString());
     }
 }

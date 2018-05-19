@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this,ChatActivity.class));
+                startActivity(new Intent(ProfileActivity.this,ChatActivity.class).putExtra("user_name",feedItem.getTitle()).putExtra("user_pic",feedItem.getTitleImageUrl()));
             }
         });
     }

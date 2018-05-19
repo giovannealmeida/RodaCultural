@@ -7,11 +7,13 @@ package br.gov.rodacultural.rodacultural.models;
 public class User {
     private long id;
     private String name;
+    private String picUrl;
     private boolean isSender;
 
-    public User(long id, String name, boolean isSender) {
+    public User(long id, String name, String picUrl, boolean isSender) {
         this.id = id;
         this.name = name;
+        this.picUrl = picUrl;
         this.isSender = isSender;
     }
 
