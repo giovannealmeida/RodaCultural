@@ -109,4 +109,5 @@
     <string name="event_end">Término: %1$s</string>
     <string name="edital_opening">Aberto em %1$s</string>
     <string name="message_prev">%1$s: %2$s</string>
+    <string name="hint_password">Senha</string>
 </resources>

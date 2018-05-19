@@ -1,12 +1,18 @@
 <!--?xml version="1.0" encoding="UTF-8"?-->
 <resources>
-  <color name="primaryColor">#388e3c</color>
-  <color name="primaryLightColor">#6abf69</color>
-  <color name="primaryDarkColor">#00600f</color>
-  <color name="secondaryColor">#8d6e63</color>
-  <color name="secondaryLightColor">#be9c91</color>
-  <color name="secondaryDarkColor">#5f4339</color>
-  <color name="primaryTextColor">#f9fbe7</color>
-  <color name="secondaryTextColor">#ffffff</color>
+    <color name="primaryColor">#388e3c</color>
+    <color name="primaryLightColor">#6abf69</color>
+    <color name="primaryDarkColor">#00600f</color>
+    <color name="secondaryColor">#8d6e63</color>
+    <color name="secondaryLightColor">#be9c91</color>
+    <color name="secondaryDarkColor">#5f4339</color>
+    <color name="primaryTextColor">#f9fbe7</color>
+    <color name="secondaryTextColor">#ffffff</color>
     <color name="mei_check_color">#448aff</color>
+
+    <!--SnackBar-->
+    <color name="snackBackgroundError">#992222</color>
+    <color name="snackBackgroundSuccess">#48AA48</color>
+    <color name="snackBackgroundInfo">#2196f3</color>
+
 </resources>
