@@ -26,6 +26,9 @@ import br.gov.rodacultural.rodacultural.models.FeedItem;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private String PROFILE_PLACEHOLDER = "https://projects.scpr.org/static-files/_v4/images/default_avatar.png";
+    private String CONTENT_PLACEHOLDER = "https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +41,27 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ((TextView) findViewById(R.id.tvContent)).setText(feedItem.getContent());
-        Picasso.get().load(feedItem.getTitleImageUrl()).into((ImageView) findViewById(R.id.ivTitle));
-        Picasso.get().load(feedItem.getContentImageUrl()).into((ImageView) findViewById(R.id.ivContent));
+
+        if (feedItem.getTitleImageUrl().isEmpty()) {
+            Picasso.get().load(PROFILE_PLACEHOLDER).into((ImageView) findViewById(R.id.ivTitle));
+        } else {
+            Picasso.get().load(feedItem.getTitleImageUrl()).into((ImageView) findViewById(R.id.ivTitle));
+        }
+
+        if (feedItem.getContentImageUrl().isEmpty()) {
+            Picasso.get().load(CONTENT_PLACEHOLDER).into((ImageView) findViewById(R.id.ivContent));
+        } else {
+            Picasso.get().load(feedItem.getContentImageUrl()).into((ImageView) findViewById(R.id.ivContent));
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this,ChatActivity.class).putExtra("user_name",feedItem.getTitle()).putExtra("user_pic",feedItem.getTitleImageUrl()));
+                startActivity(
+                        new Intent(ProfileActivity.this, ChatActivity.class)
+                                .putExtra("user_name", feedItem.getTitle())
+                                .putExtra("user_pic", feedItem.getTitleImageUrl().isEmpty()?PROFILE_PLACEHOLDER:feedItem.getTitleImageUrl()));
             }
         });
     }

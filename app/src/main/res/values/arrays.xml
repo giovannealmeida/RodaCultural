@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_category">
+        <item>Selecione uma categoria...</item>
+        <item>Patrimônio cultural</item>
+        <item>Tangível</item>
+        <item>Intangível</item>
+    </string-array>
+</resources>

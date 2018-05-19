@@ -6,27 +6,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_account"
             android:title="Perfil" />
         <item
             android:id="@+id/nav_groups"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_group"
             android:title="Grupos" />
         <item
             android:id="@+id/nav_agenda"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_event"
             android:title="Agenda cultural" />
         <item
             android:id="@+id/nav_editais"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_assignment"
             android:title="Editais" />
         <item
             android:id="@+id/nav_messages"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_message"
             android:title="Mensagens" />
     </group>
 
@@ -34,20 +34,20 @@
         <menu>
             <item
                 android:id="@+id/nav_about_mei"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_class"
                 android:title="Sobre MEI" />
             <item
                 android:id="@+id/nav_about_app"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_roda_cultural"
                 android:title="Sobre o Roda Cultural" />
 
             <item
                 android:id="@+id/nav_faq"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_help"
                 android:title="FAQ" />
             <item
                 android:id="@+id/nav_about_iana"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_iana"
                 android:title="Sobre IA.na" />
         </menu>
     </item>

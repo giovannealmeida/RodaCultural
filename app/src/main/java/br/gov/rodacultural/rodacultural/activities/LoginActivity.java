@@ -37,7 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doLogin();
+//                doLogin();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
             }
         });
         tvMessage = (TextView) findViewById(R.id.tvMessage);

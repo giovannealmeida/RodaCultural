@@ -103,12 +103,17 @@
     <string name="btAdd">Adicionar</string>
     <string name="actionClose">Fechar</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="event_start">Início: %1$s</string>
     <string name="event_end">Término: %1$s</string>
     <string name="edital_opening">Aberto em %1$s</string>
     <string name="message_prev">%1$s: %2$s</string>
     <string name="hint_password">Senha</string>
     <string name="hint_email">E-mail</string>
+    <string name="about_app">
+        O <b>Roda Cultural</b> foi desenvolvido com o intuito de auxiliar os agentes culturais, criando uma comunidade integrada. Estes agentes podem ser artistas, instrutores, monumentos, imóveis, etc.
+        \n\n
+        Através do aplicativo, os usuários estarão ligados a todos os aspectos da cultura local, podendo consultar editais e eventos culturais regionais. Além de poder interagir diretamente com outros usuários.
+        \n\n
+        O <b>Roda Cultural</b> está apto a receber incentivos fiscais por meio da <b>Lei Rouanet</b> (Lei 8.313/1991).
+    </string>
 </resources>

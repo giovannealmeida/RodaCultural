@@ -15,13 +15,25 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        final SessionHelper session = new SessionHelper(this);
-        if(session.isLogged()){
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-            finish();
-        } else {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    sleep(3000);
+                    final SessionHelper session = new SessionHelper(SplashActivity.this);
+                    if(session.isLogged()){
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                        finish();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
     }
 }
