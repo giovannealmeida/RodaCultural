@@ -42,7 +42,7 @@
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.ChatActivity" />
-        <activity android:name=".activities.GroupActivity"></activity>
+        <activity android:name=".activities.GroupFragment"></activity>
     </application>
 
 </manifest>
